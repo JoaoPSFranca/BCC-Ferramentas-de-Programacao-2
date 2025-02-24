@@ -1,0 +1,11 @@
+GET = faz requisição pedindo algo (solicita info)
+    - dados de uma entidade
+    - lista de entidades
+    - lista filtrada
+
+POST = salva algo na API
+
+PUT = Alterar um dado completo
+PATCH = Alterar um dado parcialmente
+
+DELETE = Exclui um dado na API
