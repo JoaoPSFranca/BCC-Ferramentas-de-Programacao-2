@@ -29,4 +29,29 @@ public class ClienteController {
     public List<Cliente> getByName(@RequestParam(value = "nome", defaultValue = "") String nome) {
         return clienteRepository.findByNomeLike("%" + nome + "%");
     }
+
+    @PostMapping(value = "",
+                 consumes = MediaType.APPLICATION_JSON_VALUE,
+                 produces = MediaType.APPLICATION_JSON_VALUE)
+    public Cliente createCliente(@RequestBody Cliente cliente){
+        clienteRepository.save(cliente);
+        return cliente;
+    }
+
+    @DeleteMapping(value = "/{codigo}")
+    public Optional<Cliente> deleteCliente(@PathVariable int codigo){
+        Optional<Cliente> cliente = clienteRepository.findById(codigo);
+        clienteRepository.deleteById(codigo);
+
+        return cliente;
+    }
+    @PutMapping(value = "/{codigo}",
+                consumes = MediaType.APPLICATION_JSON_VALUE,
+                produces = MediaType.APPLICATION_JSON_VALUE)
+    public Cliente updateCliente(@PathVariable int codigo,
+                                 @RequestBody Cliente cliente) {
+        cliente.setCodigo(codigo);
+        Cliente clienteAlterado = clienteRepository.save(cliente);
+        return clienteAlterado;
+    }
 }
