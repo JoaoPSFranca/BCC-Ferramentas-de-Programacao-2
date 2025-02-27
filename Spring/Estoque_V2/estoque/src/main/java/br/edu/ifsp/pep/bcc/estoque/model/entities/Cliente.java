@@ -24,4 +24,7 @@ public class Cliente {
     private String email;
     @Column(name="telefone", length = 15, nullable = false)
     private String telefone;
+
+    @Column(name="ativo")
+    private int ativo;
 }
