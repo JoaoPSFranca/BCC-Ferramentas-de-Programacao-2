@@ -2,6 +2,7 @@ package br.edu.ifsp.pep.bcc.estoque.controller;
 
 import br.edu.ifsp.pep.bcc.estoque.model.entities.Cliente;
 import br.edu.ifsp.pep.bcc.estoque.model.repositories.ClienteRepository;
+import br.edu.ifsp.pep.bcc.estoque.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,15 +12,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+//https://dontpad.com/tomaaiteuotaro/controler
+
 @RestController
 @RequestMapping("cliente")
 public class ClienteController {
     @Autowired
-    ClienteRepository clienteRepository;
+    ClienteService clienteService;
 
     @GetMapping(value="/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Cliente>> getAll() {
-        List<Cliente> listaClientes = clienteRepository.findAll();
+        List<Cliente> listaClientes = clienteService.getAll();
         if (listaClientes.isEmpty())
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else
