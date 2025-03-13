@@ -1,6 +1,7 @@
 package br.edu.ifsp.pep.bcc.estoque.model.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
@@ -19,6 +20,7 @@ public class Client {
     @EqualsAndHashCode.Include // incluindo o atributo no equals and hashCode
     private int codigo;
 
+    @NotBlank(message = "")
     @Column(name = "nome", length = 60, nullable = false)
     private String nome;
 

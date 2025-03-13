@@ -8,14 +8,27 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static java.util.Objects.nonNull;
+
 @Service
 public class ClientService {
 
     @Autowired
     ClientRepository clientRepository;
 
-    public Client create(Client client){
-        return clientRepository.save(client);
+    public Client create(Client client) throws Exception {
+        try {
+            if (nonNull(clientRepository.findOneByEmail(client.getEmail()))) {
+                throw new Exception("O email inserido ja pertence a outro cliente.");
+            }
+            if (nonNull(clientRepository.findOneByTelefone(client.getTelefone()))) {
+                throw new Exception("O telefone inserido ja pertence a outro cliente.");
+            }
+
+            return clientRepository.save(client);
+        } catch (Exception ee) {
+            throw new Exception(ee.getMessage());
+        }
     }
 
     public boolean alterStatus(int codigo, int status){
