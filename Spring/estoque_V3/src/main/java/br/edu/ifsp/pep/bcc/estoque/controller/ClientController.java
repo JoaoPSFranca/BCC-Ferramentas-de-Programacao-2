@@ -4,6 +4,8 @@ import br.edu.ifsp.pep.bcc.estoque.dto.ClientDTO;
 import br.edu.ifsp.pep.bcc.estoque.dto.ClientResponseDTO;
 import br.edu.ifsp.pep.bcc.estoque.model.entities.Client;
 import br.edu.ifsp.pep.bcc.estoque.service.ClientService;
+import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("client")
 public class ClientController {
@@ -63,7 +66,7 @@ public class ClientController {
     @PostMapping(value = "",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClientResponseDTO> createClient(@RequestBody ClientDTO dto) throws Exception {
+    public ResponseEntity<ClientResponseDTO> createClient(@Valid @RequestBody ClientDTO dto) throws Exception {
         try{
             Client cli = clientService.create(dto.convertToObject());
             return new ResponseEntity<>(ClientResponseDTO.convertToDTO(cli), HttpStatus.CREATED);
@@ -86,7 +89,7 @@ public class ClientController {
                 consumes = MediaType.APPLICATION_JSON_VALUE,
                 produces = MediaType.APPLICATION_JSON_VALUE)
 
-    public ResponseEntity<Client> updateClient(@PathVariable int codigo, @RequestBody Client client){
+    public ResponseEntity<Client> updateClient(@PathVariable int codigo, @Valid @RequestBody Client client){
         Client clientAlter = clientService.updateClient(codigo, client);
         if (clientAlter != null){
             return ResponseEntity.ok(clientAlter);
