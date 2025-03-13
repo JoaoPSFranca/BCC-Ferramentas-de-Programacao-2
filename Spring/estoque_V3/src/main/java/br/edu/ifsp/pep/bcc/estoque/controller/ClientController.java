@@ -5,6 +5,7 @@ import br.edu.ifsp.pep.bcc.estoque.dto.ClientResponseDTO;
 import br.edu.ifsp.pep.bcc.estoque.model.entities.Client;
 import br.edu.ifsp.pep.bcc.estoque.service.ClientService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("client")
+@RequiredArgsConstructor
 public class ClientController {
 
     //@PathVariable: Para capturar valores diretamente do caminho da URL.
@@ -31,8 +33,7 @@ public class ClientController {
     PATCH -> Query Params, Path Params, Body, altera somente o atributo da entidade
     */
 
-    @Autowired
-    ClientService clientService;
+    private final ClientService clientService;
 
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Client>> getAll(){
