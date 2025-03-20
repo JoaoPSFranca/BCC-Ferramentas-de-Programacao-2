@@ -1,7 +1,8 @@
-package br.edu.ifsp.pep.bcc.serviceOrder.model;
+package br.edu.ifsp.pep.bcc.serviceOrder.model.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,17 +15,16 @@ import lombok.NoArgsConstructor;
 @Table(name="service_order_item")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ServiceOrderItem {
-    @Id
-    @Column(name="id_item")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EmbeddedId
     @EqualsAndHashCode.Include
-    private int IdItem;
+    private ServiceOrderItemID id;
 
     @Column(name="service")
     @EqualsAndHashCode.Include
     @NotBlank(message = "Service number can't be empty. ")
     private int service;
 
+    @Positive
     @Column(name="price")
     @NotBlank(message = "Price can't be empty. ")
     private int price;
