@@ -18,11 +18,11 @@ public class ServiceOrderItem {
     @Id
     @ManyToOne
     @EqualsAndHashCode.Include
-    @JoinColumn(name = "id_so", referencedColumnName = "id")
+    @JoinColumn(name = "so_id", referencedColumnName = "id")
     private ServiceOrder serviceOrder;
 
     @Id
-    @Column(name = "id_item")
+    @Column(name = "item_id")
     @EqualsAndHashCode.Include
     private Integer idItem;
 
