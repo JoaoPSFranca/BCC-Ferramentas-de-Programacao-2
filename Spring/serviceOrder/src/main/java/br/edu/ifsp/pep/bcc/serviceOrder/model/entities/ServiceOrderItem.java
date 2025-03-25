@@ -3,21 +3,28 @@ package br.edu.ifsp.pep.bcc.serviceOrder.model.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="service_order_item")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+
+@IdClass(ServiceOrderItemID.class)
+@Table(name="service_order_item")
 public class ServiceOrderItem {
-    @EmbeddedId
+    @Id
+    @ManyToOne
     @EqualsAndHashCode.Include
-    private ServiceOrderItemID id;
+    @JoinColumn(name = "id_so", referencedColumnName = "id")
+    private ServiceOrder serviceOrder;
+
+    @Id
+    @Column(name = "id_item")
+    @EqualsAndHashCode.Include
+    private Integer idItem;
 
     @Column(name="service")
     @EqualsAndHashCode.Include

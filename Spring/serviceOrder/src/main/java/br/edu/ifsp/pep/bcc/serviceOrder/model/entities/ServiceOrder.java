@@ -5,21 +5,22 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-@Data
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="service_order")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class ServiceOrder {
+
+@Table(name="service_order")
+public class ServiceOrder implements Serializable {
 
     @Id
     @Column(name="id")
@@ -53,6 +54,9 @@ public class ServiceOrder {
     @JoinColumn(name="client_id", referencedColumnName = "id")
     private Client client;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "serviceOrder", orphanRemoval = true)
+    List<ServiceOrderItem> services = new ArrayList<>();
+
     public ServiceOrder(String paymentMethod, int id, Client client) {
         this.paymentMethod = paymentMethod;
         this.openDate = LocalDate.now();
@@ -61,3 +65,4 @@ public class ServiceOrder {
         this.client = client;
     }
 }
+

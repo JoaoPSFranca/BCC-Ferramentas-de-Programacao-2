@@ -1,15 +1,17 @@
 package br.edu.ifsp.pep.bcc.serviceOrder.model.entities;
 
 import jakarta.persistence.Embeddable;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.io.Serializable;
 
 @Getter
 @Setter
-@Embeddable
-public class ServiceOrderItemID {
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 
-    private ServiceOrder serviceOrder;
-
-    private ServiceOrderItem serviceOrderItem;
+public class ServiceOrderItemID implements Serializable {
+    private int serviceOrder;
+    private int idItem;
 }
