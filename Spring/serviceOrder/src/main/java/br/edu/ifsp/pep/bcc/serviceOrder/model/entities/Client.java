@@ -38,20 +38,19 @@ public class Client {
     private String email;
 
     @NotNull
-    @Column(name="telephone", length = 100)
-    @NotBlank(message = "The telephone can't be empty. ")
-    @Size(min = 8, max = 15, message = "Telephone must contain between 2 and 100 characters. ")
-    private String telephone;
+    @Column(name="phone", length = 100)
+    @NotBlank(message = "The phone can't be empty. ")
+    @Size(min = 8, max = 15, message = "phone must contain between 2 and 100 characters. ")
+    private String phone;
 
     @NotNull
     @Column(name = "active")
     private int active;
 
-    public Client(int id, String name, String email, String telephone) {
-        this.id = id;
+    public Client(String name, String email, String telephone) {
         this.name = name;
         this.email = email;
-        this.telephone = telephone;
+        this.phone = telephone;
         this.active = 1;
     }
 }
