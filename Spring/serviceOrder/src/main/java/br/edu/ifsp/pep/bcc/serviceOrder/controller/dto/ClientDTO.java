@@ -1,4 +1,4 @@
-package br.edu.ifsp.pep.bcc.serviceOrder.dto;
+package br.edu.ifsp.pep.bcc.serviceOrder.controller.dto;
 
 import br.edu.ifsp.pep.bcc.serviceOrder.model.entities.Client;
 import jakarta.validation.constraints.NotBlank;

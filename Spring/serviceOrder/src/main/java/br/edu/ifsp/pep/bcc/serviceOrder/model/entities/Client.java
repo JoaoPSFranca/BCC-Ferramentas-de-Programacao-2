@@ -1,10 +1,7 @@
 package br.edu.ifsp.pep.bcc.serviceOrder.model.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -40,7 +37,9 @@ public class Client {
     @NotNull
     @Column(name="phone", length = 100)
     @NotBlank(message = "The phone can't be empty. ")
-    @Size(min = 8, max = 15, message = "phone must contain between 2 and 100 characters. ")
+    @Size(min = 8, max = 15, message = "Phone must contain between 2 and 100 characters. ")
+    @Pattern(regexp = "(\\(\\d{2}\\)\\s)(\\d{4,5}\\-\\d{4})",
+            message = "Phone pattern must be (XX) XXXXX-XXXX")
     private String phone;
 
     @NotNull
