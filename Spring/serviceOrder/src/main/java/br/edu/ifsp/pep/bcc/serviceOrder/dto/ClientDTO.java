@@ -1,6 +1,6 @@
-package br.edu.ifsp.pep.bcc.serviceOrder.controller.dto;
+package br.edu.ifsp.pep.bcc.serviceOrder.dto;
 
-import br.edu.ifsp.pep.bcc.serviceOrder.model.entities.Client;
+import br.edu.ifsp.pep.bcc.serviceOrder.model.Client;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 

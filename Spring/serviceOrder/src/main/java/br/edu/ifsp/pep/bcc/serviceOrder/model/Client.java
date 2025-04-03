@@ -1,4 +1,4 @@
-package br.edu.ifsp.pep.bcc.serviceOrder.model.entities;
+package br.edu.ifsp.pep.bcc.serviceOrder.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -38,8 +38,7 @@ public class Client {
     @Column(name="phone", length = 100)
     @NotBlank(message = "The phone can't be empty. ")
     @Size(min = 8, max = 15, message = "Phone must contain between 2 and 100 characters. ")
-    @Pattern(regexp = "(\\(\\d{2}\\)\\s)(\\d{4,5}\\-\\d{4})",
-            message = "Phone pattern must be (XX) XXXXX-XXXX")
+    @Pattern(regexp = "(\\(\\d{2}\\)\\s)(\\d{4,5}\\-\\d{4})", message = "Phone pattern must be (XX) XXXXX-XXXX")
     private String phone;
 
     @NotNull
@@ -53,4 +52,3 @@ public class Client {
         this.active = 1;
     }
 }
-

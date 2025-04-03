@@ -1,4 +1,4 @@
-package br.edu.ifsp.pep.bcc.serviceOrder.model.entities;
+package br.edu.ifsp.pep.bcc.serviceOrder.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

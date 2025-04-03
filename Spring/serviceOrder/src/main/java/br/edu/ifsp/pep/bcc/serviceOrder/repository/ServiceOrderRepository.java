@@ -1,6 +1,6 @@
 package br.edu.ifsp.pep.bcc.serviceOrder.repository;
 
-import br.edu.ifsp.pep.bcc.serviceOrder.model.entities.ServiceOrder;
+import br.edu.ifsp.pep.bcc.serviceOrder.model.ServiceOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

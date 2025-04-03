@@ -1,6 +1,6 @@
 package br.edu.ifsp.pep.bcc.serviceOrder.controller;
 
-import br.edu.ifsp.pep.bcc.serviceOrder.model.entities.Client;
+import br.edu.ifsp.pep.bcc.serviceOrder.model.Client;
 import br.edu.ifsp.pep.bcc.serviceOrder.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
