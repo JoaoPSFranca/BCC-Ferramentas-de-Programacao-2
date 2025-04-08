@@ -26,10 +26,17 @@ public class ServiceOrderItem {
     @EqualsAndHashCode.Include
     private Integer idItem;
 
-    @Column(name="service")
-    @EqualsAndHashCode.Include
-    @NotBlank(message = "Service number can't be empty. ")
-    private int service;
+    @Enumerated(EnumType.STRING)
+    @Column(name="service", nullable = false)
+    @ElementCollection(targetClass = TypeServices.class, fetch = FetchType.EAGER)
+    @JoinTable(
+            name="service_order_item_type_service",
+            joinColumns = {
+                    @JoinColumn(name="so_id"),
+                    @JoinColumn(name="item_id")
+            }
+    )
+    private TypeServices service;
 
     @Positive
     @Column(name="price")

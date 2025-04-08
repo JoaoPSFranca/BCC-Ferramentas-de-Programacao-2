@@ -1,5 +1,7 @@
 package br.edu.ifsp.pep.bcc.serviceOrder.controller;
 
+import br.edu.ifsp.pep.bcc.serviceOrder.dto.ClientDTO;
+import br.edu.ifsp.pep.bcc.serviceOrder.mapper.ClientMapper;
 import br.edu.ifsp.pep.bcc.serviceOrder.model.Client;
 import br.edu.ifsp.pep.bcc.serviceOrder.service.ClientService;
 import lombok.RequiredArgsConstructor;
@@ -19,26 +21,29 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientController {
     private final ClientService clientService;
+    private final ClientMapper mapper;
 
     @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Client>> index() {
+    public ResponseEntity<List<ClientDTO>> index() {
         List<Client> clients = clientService.findAll();
 
         if (clients.isEmpty())
             return ResponseEntity.noContent().build();
-
-        return ResponseEntity.ok(clients);
+        else
+            return ResponseEntity.ok(
+                    mapper.clientListToClientDTOList(clients)
+            );
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Client> getClient(@PathVariable int id) {
+    public ResponseEntity<ClientDTO> getClient(@PathVariable int id) {
         Client client = clientService.getById(id);
 
         if (client != null)
-            return ResponseEntity.ok(client);
+            return ResponseEntity.ok(
+                    mapper.clientToClientDTO(client)
+            );
         else
             return ResponseEntity.notFound().build();
     }
-
-
 }
