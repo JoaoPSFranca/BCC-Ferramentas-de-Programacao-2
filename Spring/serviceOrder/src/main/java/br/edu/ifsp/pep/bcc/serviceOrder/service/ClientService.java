@@ -32,11 +32,13 @@ public class ClientService {
         }
     }
 
-    public Client update(Client client) throws ServiceException {
-        Optional<Client> optional = clientRepository.findById(client.getId());
+    public Client update(Client client, int id) throws ServiceException {
+        Optional<Client> optional = clientRepository.findById(id);
 
-        if(optional.isPresent())
+        if(optional.isPresent()){
+            client.setId(id);
             return clientRepository.save(client);
+        }
 
         return null;
     }

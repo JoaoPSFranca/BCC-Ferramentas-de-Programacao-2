@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
 public record ClientDTO(
-    @NotBlank()
+    @NotBlank
     @Size(min = 3, max = 50)
     String name,
 
