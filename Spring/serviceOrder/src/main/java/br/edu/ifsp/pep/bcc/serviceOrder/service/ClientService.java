@@ -22,9 +22,9 @@ public class ClientService {
     public Client save(Client client) throws ServiceException {
         try {
             if(nonNull(clientRepository.findByEmail(client.getEmail())))
-                throw new ServiceException("Email já cadastrado. ");
+                throw new ServiceException("Email already registred. ");
             if(nonNull(clientRepository.findByPhone(client.getPhone())))
-                throw new ServiceException("Telefone já cadastrado. ");
+                throw new ServiceException("Phone already registred. ");
 
             return clientRepository.save(client);
         } catch (Exception e){
