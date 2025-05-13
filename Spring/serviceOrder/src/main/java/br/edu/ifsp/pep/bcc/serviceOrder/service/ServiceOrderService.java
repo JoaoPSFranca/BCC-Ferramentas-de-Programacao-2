@@ -2,7 +2,6 @@ package br.edu.ifsp.pep.bcc.serviceOrder.service;
 
 import br.edu.ifsp.pep.bcc.serviceOrder.model.ServiceOrder;
 import br.edu.ifsp.pep.bcc.serviceOrder.model.ServiceOrderItem;
-import br.edu.ifsp.pep.bcc.serviceOrder.repository.ServiceOrderItemRepository;
 import br.edu.ifsp.pep.bcc.serviceOrder.repository.ServiceOrderRepository;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
