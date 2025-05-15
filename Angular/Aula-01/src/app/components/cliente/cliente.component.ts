@@ -1,25 +1,33 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Cliente } from '../../models/cliente.model';
-
+import { Component, inject, OnInit } from '@angular/core';
+import { ClienteService } from '../../services/cliente/cliente.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-cliente',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [AsyncPipe],
   templateUrl: './cliente.component.html',
   styleUrl: './cliente.component.scss'
 })
-export class ClienteComponent {
+export class ClienteComponent implements OnInit {
 
-  private formBuilder = inject(FormBuilder);
+  private clienteService = inject(ClienteService);
+  protected cliente$ = new Observable<any>();
 
-  protected profileForm = this.formBuilder.group({
-    nome: ['', [Validators.required, Validators.minLength(3)]],
-    telefone: [''],
-    idade: [0, Validators.required]
-  });
-
-    public cadastrar() {
-    console.log(this.profileForm.valid);
+  constructor() {
   }
+
+  ngOnInit(): void {
+    console.log("ngOnInit");
+    this.buscarClientes();
+  }
+
+  public buscarClientes() {
+      this.cliente$ = this.clienteService.buscarClientes();
+  }
+
+  public remover(id:number){
+      this.clienteService.remover(id);
+  }
+
 }

@@ -9,5 +9,25 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "clientes": [
+    {
+      "id": "1",
+      "nome": "Maria Antonia",
+      "telefone": "(18)99912-9128",
+      "email": "maria@gmail.com"
+    },
+    {
+      "id": "2",
+      "nome": "Luis Carlos",
+      "telefone": "(18)99123-3128",
+      "email": "lucar@gmail.com"
+    },
+    {
+      "id": "3",
+      "nome": "Ana Claudia",
+      "telefone": "(18)98231-9128",
+      "email": "clau@gmail.com"
+    }
+  ]
 }

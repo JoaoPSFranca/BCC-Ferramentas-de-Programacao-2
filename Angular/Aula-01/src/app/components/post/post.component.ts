@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { PostService } from '../../services/post.service';
+import { PostService } from '../../services/post/post.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
